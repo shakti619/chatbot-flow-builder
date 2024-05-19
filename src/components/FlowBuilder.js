@@ -33,18 +33,19 @@ const FlowBuilder = () => {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
   const [selectedNode, setSelectedNode] = useState(null);
+  const [settingsPanelOpen, setSettingsPanelOpen] = useState(false);
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const settingsPanelRef = useRef(null);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
+    []
   );
 
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
+    []
   );
 
   const onConnect = useCallback(
@@ -61,6 +62,7 @@ const FlowBuilder = () => {
 
   const onNodeClick = (event, node) => {
     setSelectedNode(node);
+    setSettingsPanelOpen(true); // Open the settings panel when a node is clicked
   };
 
   const onDragOver = (event) => {
@@ -93,28 +95,30 @@ const FlowBuilder = () => {
   };
 
   const handleLabelChange = (newLabel) => {
-    setNodes((nds) =>
-      nds.map((node) => {
-        if (node.id === selectedNode.id) {
-          return {
-            ...node,
-            data: {
-              ...node.data,
-              label: newLabel,
-            },
-          };
-        }
-        return node;
-      })
-    );
+    if (selectedNode) {
+      setNodes((nds) =>
+        nds.map((node) => {
+          if (node.id === selectedNode.id) {
+            return {
+              ...node,
+              data: {
+                ...node.data,
+                label: newLabel,
+              },
+            };
+          }
+          return node;
+        })
+      );
 
-    setSelectedNode((prevSelectedNode) => ({
-      ...prevSelectedNode,
-      data: {
-        ...prevSelectedNode.data,
-        label: newLabel,
-      },
-    }));
+      setSelectedNode((prevSelectedNode) => ({
+        ...prevSelectedNode,
+        data: {
+          ...prevSelectedNode.data,
+          label: newLabel,
+        },
+      }));
+    }
   };
 
   const handleClickOutside = useCallback((event) => {
@@ -135,12 +139,11 @@ const FlowBuilder = () => {
   }, [handleClickOutside]);
 
   return (
-    <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+    <div style={{ height: "100vh", display: "flex", flexDirection: "column", backgroundColour:"#ffffff" }}>
       <div style={styles.navbar}>
         <h3 style={styles.navbarTitle}>Chatbot Flow Builder</h3>
         <ToastContainer />
         <SaveButton nodes={nodes} edges={edges} />
-        
       </div>
       <div style={styles.container}>
         <div style={styles.flowWrapper} ref={reactFlowWrapper}>
@@ -162,9 +165,13 @@ const FlowBuilder = () => {
             <Background />
           </ReactFlow>
         </div>
-        {selectedNode ? (
+        {settingsPanelOpen && selectedNode ? (
           <div ref={settingsPanelRef} style={styles.sidebar}>
-            <SettingsPanel selectedNode={selectedNode} handleLabelChange={handleLabelChange} />
+            <SettingsPanel 
+              selectedNode={selectedNode} 
+              handleLabelChange={handleLabelChange} 
+              setSettingsPanelOpen={setSettingsPanelOpen} // Pass the state handler
+            />
           </div>
         ) : (
           <div style={styles.sidebar}>
@@ -178,7 +185,7 @@ const FlowBuilder = () => {
 
 const styles = {
   navbar: {
-    backgroundColor: "#f4f4f4",
+    backgroundColor: "#f3f3f3",
     padding: "10px 20px",
     display: "flex",
     justifyContent: "space-between",

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
+import { ArrowLeft } from "tabler-icons-react"; // Import the ArrowLeft icon
 
-const SettingsPanel = ({ selectedNode, handleLabelChange }) => {
+const SettingsPanel = ({ selectedNode, handleLabelChange, setSettingsPanelOpen }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -16,14 +17,21 @@ const SettingsPanel = ({ selectedNode, handleLabelChange }) => {
 
   return (
     <aside style={styles.panel}>
-      <h3 style={styles.heading}>Message</h3>
+      <div style={styles.header}>
+        <ArrowLeft
+          className="left-arrow"
+          size={30}
+          onClick={() => setSettingsPanelOpen(false)}
+          style={styles.leftArrow}
+        />
+        <h3 style={styles.heading}>Message</h3>
+      </div>
       <label htmlFor="text" style={styles.label}>Text:</label>
-      <textArea
-        type="text"
+      <textarea
         id="text"
-        value={selectedNode.data.label}
+        value={selectedNode ? selectedNode.data.label : ""}
         onChange={handleTextChange}
-        style={styles.input}
+        style={styles.textArea}
         ref={inputRef}
       />
     </aside>
@@ -36,10 +44,20 @@ const styles = {
     width: "100%",
     backgroundColor: "#fff",
     height: "100vh",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)"
+    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+    position: "relative" // Ensure relative positioning for the arrow
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "10px" // Adjusted margin bottom
+  },
+  leftArrow: {
+    cursor: "pointer",
+    marginRight: "10px" // Add margin to the right for spacing
   },
   heading: {
-    marginBottom: "10px",
+    margin: 0,
     fontWeight: "bold",
   },
   label: {
