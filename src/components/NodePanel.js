@@ -19,7 +19,7 @@ const NodePanel = () => {
         style={styles.node}
         className="dndnode input"
       >
-        <Message size={24} style={styles.icon} />
+        <Message size={40} style={styles.icon} />
         <span>Message</span>
       </div>
     </aside>
@@ -38,7 +38,7 @@ const styles = {
     alignItems: "center",
   },
   description: {
-    marginBottom: "10px",
+    marginBottom: "20px",
     fontWeight: "bold",
     textAlign: "center",
   },

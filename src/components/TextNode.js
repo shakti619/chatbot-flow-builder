@@ -24,13 +24,12 @@ const styles = {
   node: {
     padding: "5px",
     flexWrap: "wrap",
-    
     border: "1px solid #ddd",
     borderRadius: "8px",
     backgroundColor: "#ffffff",
     textAlign: "center",
     width: "151.2px", // 4 cm
-    height: "70.5px", // 2.5 cm
+    height: "50px", // Adjusted to auto to accommodate text wrapping
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Added shadow
     overflow: "hidden", // Ensure the content is contained within the node
     wordWrap: "break-word",
@@ -57,8 +56,9 @@ const styles = {
   label: {
     display: "flex",
     flexWrap: "wrap",
-    
     wordWrap: "break-word",
+    width: "100%", // Ensure the label takes the full width of the node
+    height: "auto", // Adjusted to auto to accommodate text wrapping
   },
 };
 
