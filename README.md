@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+Chatbot Flow Builder
+Project Description
+The Chatbot Flow Builder is a web application that allows users to design and manage chatbot flows visually. It provides a user-friendly interface to create nodes and edges, set node properties, and save the designed flow. This tool is built using React and React Flow and offers customizable node types and an intuitive drag-and-drop interface.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Drag-and-Drop Interface: Easily add and arrange nodes using a drag-and-drop interface.
+Custom Node Types: Includes a customizable text node type for sending messages.
+Flow Controls: MiniMap, Controls, and Background for better navigation and visualization.
+Node Settings: Adjust properties of individual nodes through a settings panel.
+Validation and Save: Ensure that all nodes are connected and labeled before saving the flow.
+Installation Instructions
+Clone the repository:
 
-## Available Scripts
+sh
+Copy code
+git clone https://github.com/yourusername/chatbot-flow-builder.git
+cd chatbot-flow-builder
+Install dependencies:
 
-In the project directory, you can run:
+sh
+Copy code
+npm install
+Start the development server:
 
-### `npm start`
+sh
+Copy code
+npm start
+Usage Instructions
+Open the application in your web browser:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+sh
+Copy code
+http://localhost:3000
+Use the sidebar to drag nodes onto the flow pane.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Connect nodes by dragging from one node's handle to another.
 
-### `npm test`
+Click on a node to open the settings panel and edit its properties.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Save the flow using the "Save Changes" button.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Technologies Used
+React: JavaScript library for building user interfaces.
+React Flow: Library for building node-based editors.
+Mantine: React components library for styling.
+React Toastify: Notifications for React applications.
+Tabler Icons: Icons used in the UI.
+Prerequisites
+Node.js
+npm or yarn
+Components
+App.js: Main application component.
+FlowBuilder.js: Main component for building and managing the flow.
+NodePanel.js: Sidebar component for adding new nodes.
+SettingsPanel.js: Panel component for editing node properties.
+SaveButton.js: Button component to save the flow.
+TextNode.js: Custom node component for text nodes.
+Contributors
+Your Name - shakti619
