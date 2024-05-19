@@ -11,25 +11,21 @@ Validation and Save: Ensure that all nodes are connected and labeled before savi
 Installation Instructions
 Clone the repository:
 
-sh
-Copy code
+
 git clone https://github.com/yourusername/chatbot-flow-builder.git
-cd chatbot-flow-builder
+
 Install dependencies:
 
-sh
-Copy code
+
 npm install
 Start the development server:
 
-sh
-Copy code
+
 npm start
 Usage Instructions
 Open the application in your web browser:
 
-sh
-Copy code
+
 http://localhost:3000
 Use the sidebar to drag nodes onto the flow pane.
 
