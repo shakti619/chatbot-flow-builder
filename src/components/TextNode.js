@@ -8,11 +8,12 @@ const TextNode = ({ data }) => {
     <div style={styles.node}>
       <Handle type="target" position="left" style={styles.handle} />
       <div style={styles["send-message-header"]}>
-        <div style={styles["icon-container"]}>
-          <Message size={20} style={styles.messageIcon} />
-          <BrandWhatsapp size={20} />
-        </div>
-        <Text size={15}>Send Message</Text>
+        
+          <Message size={12} style={styles.messageIcon} />
+          <Text size={8}>Send Message</Text>
+          <BrandWhatsapp size={12} />
+        
+        
       </div>
       <div styles={styles.label} >{data.label}</div>
       <Handle type="source" position="right" style={styles.handle} />
@@ -24,11 +25,11 @@ const styles = {
   node: {
     padding: "5px",
     border: "1px solid #ddd",
-    borderRadius: "4px",
+    borderRadius: "8px",
     backgroundColor: "#ffffff",
     textAlign: "center",
     width: "151.2px", // 4 cm
-    height: "94.5px", // 2.5 cm
+    height: "70.5px", // 2.5 cm
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Added shadow
     overflow: "hidden", // Ensure the content is contained within the node
     wordWrap: "break-word",
@@ -50,14 +51,7 @@ const styles = {
     height: "15px", // Adjusted height
     
   },
-  "icon-container": {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "5px",
-    height:"10px",
-    width:"40px",
-  },
+  
   messageIcon: {
     marginTop: "0px", // Adjusted to align the message icon with the text
   },

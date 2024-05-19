@@ -1,5 +1,6 @@
 import React from "react";
 import { BrandWhatsapp, Message } from "tabler-icons-react";
+import '../styles/NodePanel.css';
 
 const NodePanel = () => {
   const handleDragStart = (event, nodeType) => {

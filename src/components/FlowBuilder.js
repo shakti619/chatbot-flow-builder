@@ -12,7 +12,8 @@ import NodePanel from "./NodePanel";
 import SettingsPanel from "./SettingsPanel";
 import SaveButton from "./SaveButton";
 import TextNode from "./TextNode";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const initialNodes = [
   {
@@ -54,7 +55,7 @@ const FlowBuilder = () => {
       if (!sourceHasEdge) {
         setEdges((eds) => addEdge(params, eds));
       } else {
-        alert("Each source handle can only have one edge.");
+        toast.error("Each source handle can only have one edge.");
       }
     },
     [edges]
@@ -139,10 +140,10 @@ const FlowBuilder = () => {
   }, [handleClickOutside]);
 
   return (
-    <div style={{ height: "100vh", display: "flex", flexDirection: "column", backgroundColour:"#ffffff" }}>
+    <div style={{ height: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#ffffff" }}>
       <div style={styles.navbar}>
         <h3 style={styles.navbarTitle}>Chatbot Flow Builder</h3>
-        <ToastContainer />
+        <ToastContainer position="top-center" /> {/* Set position to top-center */}
         <SaveButton nodes={nodes} edges={edges} />
       </div>
       <div style={styles.container}>
