@@ -2,14 +2,14 @@ import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Button component to save changes
 const SaveButton = ({ nodes, edges }) => {
+  // Handler for save button click
   const handleSave = () => {
     const hasErrors = nodes.some(
       (node) =>
-        node.data.label.trim() === "" ||
-        !edges.some(
-          (edge) => edge.source === node.id || edge.target === node.id
-        )
+        node.data.label.trim() === "" || // Check for empty node labels
+        !edges.some((edge) => edge.source === node.id || edge.target === node.id) // Check for disconnected nodes
     );
 
     if (hasErrors) {
@@ -26,6 +26,7 @@ const SaveButton = ({ nodes, edges }) => {
   );
 };
 
+// Styles for the button
 const styles = {
   button: {
     padding: "10px 20px",

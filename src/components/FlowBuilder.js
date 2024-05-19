@@ -15,21 +15,24 @@ import TextNode from "./TextNode";
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
+// Initial nodes and edges
 const initialNodes = [
   {
     id: "1",
     type: "textNode",
-    data: { label: "Start" },
+    data: { label: "Start (ID: 1)" },
     position: { x: 250, y: 5 },
   },
 ];
 
 const initialEdges = [];
 
+// Define custom node types
 const nodeTypes = {
   textNode: TextNode,
 };
 
+// Main component for building flow
 const FlowBuilder = () => {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
@@ -38,17 +41,21 @@ const FlowBuilder = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const settingsPanelRef = useRef(null);
+  const nodeCounter = useRef(2); // Counter to generate unique IDs for new nodes
 
+  // Handler for node changes
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
   );
 
+  // Handler for edge changes
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
     []
   );
 
+  // Handler for connecting nodes
   const onConnect = useCallback(
     (params) => {
       const sourceHasEdge = edges.some((edge) => edge.source === params.source);
@@ -61,16 +68,19 @@ const FlowBuilder = () => {
     [edges]
   );
 
+  // Handler for node click
   const onNodeClick = (event, node) => {
     setSelectedNode(node);
     setSettingsPanelOpen(true); // Open the settings panel when a node is clicked
   };
 
+  // Handler for drag over event
   const onDragOver = (event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   };
 
+  // Handler for drop event
   const onDrop = (event) => {
     event.preventDefault();
 
@@ -85,16 +95,19 @@ const FlowBuilder = () => {
       x: event.clientX - reactFlowBounds.left,
       y: event.clientY - reactFlowBounds.top,
     });
+
+    const newId = nodeCounter.current++;
     const newNode = {
-      id: `${+new Date()}`, // Use timestamp for unique ID
+      id: `${newId}`, // Use counter for unique ID
       type,
       position,
-      data: { label: `${type} node` },
+      data: { label: `${type} node (ID: ${newId})` },
     };
 
     setNodes((nds) => nds.concat(newNode));
   };
 
+  // Handler for label change
   const handleLabelChange = (newLabel) => {
     if (selectedNode) {
       setNodes((nds) =>
@@ -122,6 +135,7 @@ const FlowBuilder = () => {
     }
   };
 
+  // Handler for clicking outside of settings panel
   const handleClickOutside = useCallback((event) => {
     if (
       settingsPanelRef.current &&
@@ -184,6 +198,7 @@ const FlowBuilder = () => {
   );
 };
 
+// Styles for the flow builder components
 const styles = {
   navbar: {
     backgroundColor: "#f3f3f3",

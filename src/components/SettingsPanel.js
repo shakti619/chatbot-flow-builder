@@ -1,15 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowLeft } from "tabler-icons-react"; // Import the ArrowLeft icon
 
+// Panel component for node settings
 const SettingsPanel = ({ selectedNode, handleLabelChange, setSettingsPanelOpen }) => {
   const inputRef = useRef(null);
 
+  // Focus the input field when the component mounts
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, [selectedNode]);
 
+  // Handler for text area change
   const handleTextChange = (event) => {
     const newLabel = event.target.value;
     handleLabelChange(newLabel);
@@ -38,6 +41,7 @@ const SettingsPanel = ({ selectedNode, handleLabelChange, setSettingsPanelOpen }
   );
 };
 
+// Styles for the settings panel
 const styles = {
   panel: {
     padding: "10px",
@@ -45,16 +49,16 @@ const styles = {
     backgroundColor: "#fff",
     height: "100vh",
     boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-    position: "relative" // Ensure relative positioning for the arrow
+    position: "relative", // Ensure relative positioning for the arrow
   },
   header: {
     display: "flex",
     alignItems: "center",
-    marginBottom: "10px" // Adjusted margin bottom
+    marginBottom: "10px", // Adjusted margin bottom
   },
   leftArrow: {
     cursor: "pointer",
-    marginRight: "10px" // Add margin to the right for spacing
+    marginRight: "10px", // Add margin to the right for spacing
   },
   heading: {
     margin: 0,

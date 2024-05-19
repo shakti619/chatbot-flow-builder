@@ -1,8 +1,10 @@
 import React from "react";
 import { BrandWhatsapp, Message } from "tabler-icons-react";
-import '../styles/NodePanel.css';
 
+
+// Panel component for adding new nodes
 const NodePanel = () => {
+  // Handler for drag start event
   const handleDragStart = (event, nodeType) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.effectAllowed = "move";
@@ -24,6 +26,7 @@ const NodePanel = () => {
   );
 };
 
+// Styles for the panel and nodes
 const styles = {
   panel: {
     padding: "10px",

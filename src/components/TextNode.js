@@ -3,27 +3,28 @@ import { Handle } from "reactflow";
 import { BrandWhatsapp, Message } from "tabler-icons-react";
 import { Text } from "@mantine/core";
 
+// Custom node component for text nodes
 const TextNode = ({ data }) => {
   return (
     <div style={styles.node}>
       <Handle type="target" position="left" style={styles.handle} />
       <div style={styles["send-message-header"]}>
-        
-          <Message size={12} style={styles.messageIcon} />
-          <Text size={8}>Send Message</Text>
-          <BrandWhatsapp size={12} />
-        
-        
+        <Message size={12} style={styles.messageIcon} />
+        <Text size={8}>Send Message</Text>
+        <BrandWhatsapp size={12} />
       </div>
-      <div styles={styles.label} >{data.label}</div>
+      <div style={styles.label}>{data.label}</div>
       <Handle type="source" position="right" style={styles.handle} />
     </div>
   );
 };
 
+// Styles for the text node
 const styles = {
   node: {
     padding: "5px",
+    flexWrap: "wrap",
+    
     border: "1px solid #ddd",
     borderRadius: "8px",
     backgroundColor: "#ffffff",
@@ -49,16 +50,16 @@ const styles = {
     padding: "5px",
     borderRadius: "5px 5px 0 0",
     height: "15px", // Adjusted height
-    
   },
-  
   messageIcon: {
     marginTop: "0px", // Adjusted to align the message icon with the text
   },
-  "label": {
-    display:"flex",
-    flexWrap:"wrap"
-  }
+  label: {
+    display: "flex",
+    flexWrap: "wrap",
+    
+    wordWrap: "break-word",
+  },
 };
 
 export default TextNode;
